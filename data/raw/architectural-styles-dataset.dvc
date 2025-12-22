@@ -1,6 +1,6 @@
 outs:
-- md5: 8ad3a565f655bfe0d709709f78e80f9e.dir
-  size: 1228945260
-  nfiles: 10113
+- md5: 2ec3ddf44e5295b19ea06fbae5338b98.dir
+  size: 456310434
+  nfiles: 5320
   hash: md5
   path: architectural-styles-dataset
