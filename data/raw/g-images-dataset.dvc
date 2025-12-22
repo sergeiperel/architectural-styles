@@ -1,0 +1,6 @@
+outs:
+- md5: 2ec3ddf44e5295b19ea06fbae5338b98.dir
+  size: 456310434
+  nfiles: 5320
+  hash: md5
+  path: g-images-dataset
