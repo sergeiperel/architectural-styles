@@ -2,3 +2,4 @@
     remote = storage
 ['remote "storage"']
     url = s3://mlops-project-25
+    endpointurl = https://storage.yandexcloud.net
