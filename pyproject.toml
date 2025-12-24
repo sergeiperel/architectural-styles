@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-architectural-styles = "architectural_styles:main"
+architectural-styles = "architectural_styles.commands:main"
 
 [build-system]
 requires = ["uv_build>=0.9.17,<0.10.0"]
@@ -64,6 +64,12 @@ select = [
     # refurb - also may be overwhelming
     "FURB",
 ]
+
+[tool.uv]
+name = "architectural_styles"
+version = "0.1.0"
+packages = ["architectural_styles"]
+src-layout = false
 
 pycodestyle = { max-doc-length = 105 }
 
