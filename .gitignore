@@ -12,9 +12,9 @@ ENV/
 env.bak/
 venv.bak/
 
-.dvc/cache
-data/**
-!data/**/*.dvc
+#.dvc/cache
+#data/**
+#!data/**/*.dvc
 
 mlruns/
 
