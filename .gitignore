@@ -19,3 +19,4 @@ venv.bak/
 mlruns/
 
 .idea/
+/data
