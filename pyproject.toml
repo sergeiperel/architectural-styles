@@ -11,10 +11,15 @@ dependencies = [
     "black>=25.12.0",
     "dvc[s3]>=3.64.2",
     "isort>=7.0.0",
+    "lightning>=2.6.0",
     "numpy>=2.4.0",
+    "pandas>=2.3.3",
+    "pillow>=12.0.0",
     "pre-commit>=4.5.1",
     "ruff>=0.14.10",
     "scikit-learn>=1.8.0",
+    "torch>=2.9.1",
+    "torchvision>=0.24.1",
 ]
 
 [project.scripts]
@@ -28,6 +33,7 @@ build-backend = "uv_build"
 [tool.ruff]
 line-length = 100
 format = { docstring-code-format = true }
+ignore = ["N812"]
 
 [tool.ruff.lint]
 select = [
@@ -64,12 +70,6 @@ select = [
     # refurb - also may be overwhelming
     "FURB",
 ]
-
-[tool.uv]
-name = "architectural_styles"
-version = "0.1.0"
-packages = ["architectural_styles"]
-src-layout = false
 
 pycodestyle = { max-doc-length = 105 }
 

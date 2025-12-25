@@ -1,0 +1,11 @@
+model:
+  name: archinet   # lenet | archinet
+  num_classes: 25
+
+data:
+  dir: data/raw/architectural-styles-dataset
+  batch_size: 32
+
+train:
+  lr: 0.001
+  epochs: 1
