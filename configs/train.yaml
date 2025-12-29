@@ -4,8 +4,13 @@ model:
 
 data:
   dir: data/raw/architectural-styles-dataset
+  infer_dir: data/raw/architectural-styles-dataset
   batch_size: 32
 
 train:
   lr: 0.001
-  epochs: 1
+  epochs: 3
+
+infer:
+  checkpoint_path: "lightning_logs/version_0/checkpoints/last.ckpt"
+  output_path: "predictions.csv"
