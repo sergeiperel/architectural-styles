@@ -1,2 +1,2 @@
-checkpoint_path: lightning_logs/version_0/checkpoints/last.ckpt
+checkpoint_path: checkpoints/${model.name}/last.ckpt
 output_path: outputs/inference_results.csv

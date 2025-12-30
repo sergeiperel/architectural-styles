@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import hydra
 import lightning as L
 from lightning.pytorch.callbacks import ModelCheckpoint
@@ -10,6 +12,13 @@ from architectural_styles.models.module import ImageClassifier
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg: DictConfig):
+    checkpoint_dir = Path(f"checkpoints/{cfg.model.name}")
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+
+    last_ckpt = checkpoint_dir / "last.ckpt"
+    if last_ckpt.exists():
+        last_ckpt.unlink()
+
     train_loader, val_loader = create_dataloaders(
         data_dir=cfg.data.dir,
         batch_size=cfg.data.batch_size,
@@ -22,8 +31,8 @@ def main(cfg: DictConfig):
     )
 
     checkpoint_cb = ModelCheckpoint(
-        dirpath="checkpoints",
-        filename=f"{cfg.model.name}-{{epoch}}-{{val_loss:.2f}}",
+        dirpath=f"checkpoints/{cfg.model.name}",
+        filename=f"{cfg.model.name}-epoch{{epoch}}-lr{cfg.train.lr}-val_loss{{val_loss:.2f}}",
         save_top_k=1,
         monitor="val_loss",
         mode="min",
@@ -31,8 +40,8 @@ def main(cfg: DictConfig):
     )
 
     mlflow_logger = MLFlowLogger(
-        experiment_name="architectural_styles",
-        tracking_uri="http://127.0.0.1:8080",
+        experiment_name=cfg.logging.mlflow.experiment_name,
+        tracking_uri=cfg.logging.mlflow.tracking_uri,
     )
 
     trainer = L.Trainer(

@@ -12,8 +12,12 @@ from architectural_styles.models.module import ImageClassifier
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg: DictConfig):
+    checkpoint_path = cfg.infer.checkpoint_path
+    if checkpoint_path is None:
+        checkpoint_path = f"checkpoints/{cfg.model.name}/last.ckpt"
+
     model = ImageClassifier.load_from_checkpoint(
-        cfg.infer.checkpoint_path,
+        checkpoint_path,
         model_name=cfg.model.name,
         num_classes=cfg.model.num_classes,
         lr=cfg.train.lr,

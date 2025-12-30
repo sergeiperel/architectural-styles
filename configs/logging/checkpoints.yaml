@@ -1,0 +1,7 @@
+checkpoint:
+  dirpath: "checkpoints"
+  filename: "{model_name}-{epoch}-{val_loss:.2f}"
+  save_top_k: 1
+  monitor: "val_loss"
+  mode: "min"
+  save_last: true

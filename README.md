@@ -37,10 +37,9 @@ Adaptation of the classic LeNet-5 architecture for RGB images.
 A deeper custom convolutional network, developed specifically for this task.
 
 Model selection is performed via Hydra:
-```
 - model.name=lenet
 - model.name=archinet
-```
+
 
 ## ⚙️ Tech Stack
 
@@ -79,23 +78,28 @@ Downloading a dataset. DVC will automatically download data from remote storage 
     ```
 
 ## 💪 Train
-Training is launched through a single entry point using Hydra
+Don't forget to start MLflow server before the training part
+
+```
+mlflow ui --host 127.0.0.1 --port 8080
+```
+
+Training is launched through a single entry point using Hydra. Hyperparameters and model choice can be overridden directly in the command line or through configs.
 
 - ArchiNet Training
     ```
-    python -m architectural_styles.train model.name=archinet
+    uv run python -m architectural_styles.train "model.name=archinet" "train.epochs=1" "train.lr=0.01" "data.batch_size=32"
     ```
 - LeNet Training
     ```
-    python -m architectural_styles.train model.name=lenet
+    uv run python -m architectural_styles.train "model.name=lenet" "train.epochs=3" "train.lr=0.001" "data.batch_size=16"
     ```
 
 What happens during training:
 - Data loading
-- Model training
-- Validation
-- Metrics logging in MLflow
-- Checkpoints saving in lightning_logs/
+- Model training with validation
+- Metrics logging via MLflow
+- Checkpoints saved in checkpoints/{model_name}/ (each model has its own folder with last.ckpt and top-k checkpoints)
 
 
 ## 📊 Logging (MLflow)
@@ -108,34 +112,38 @@ During training, the following are logged:
 - hyperparameters
 
 Launching MLflow UI:
-    ```
-    mlflow ui --host 127.0.0.1 --port 8080
-    ```
+```
+mlflow ui --host 127.0.0.1 --port 8080
+```
+
 After this, the interface will be accessible at: http://127.0.0.1:8080
 
 ## 🔍 Inference
 Inference is performed using the last checkpoint of the trained model.
-    ```
-    python -m architectural_styles.infer model.name=archinet
-    ```
+```
+uv run python -m architectural_styles.infer model.name=archinet
+```
 
 The inference results are saved in a CSV file:
-    ```
-    outputs/inference_results.csv
-    ```
+```
+outputs/inference_results.csv
+```
+The script automatically loads the corresponding checkpoint for the chosen model.
 
 ## 📂 Project Structure
 ```
 architectural-styles/
 ├── configs/                # Hydra configs
-├── data/                   # DVC metadata
+├── data/                   # DVC metadata + inference data
 ├── src/
 │   └── architectural_styles/
 │       ├── data/           # Dataset & dataloaders
 │       ├── models/         # CNN models + LightningModule
 │       ├── preprocessing/  # Transforms
 │       ├── infer.py
-│       └── main.py
+│       └── train.py
+├── checkpoints/            # saved checkpoints for each model
+├── outputs/                # inference results
 ├── pyproject.toml
 ├── uv.lock
 ├── data.dvc
