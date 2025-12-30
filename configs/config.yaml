@@ -1,0 +1,7 @@
+defaults:
+  - data: default
+  - train: default
+  - model: archinet
+  - inference: default
+  - logging: mlflow
+  - _self_

@@ -8,7 +8,7 @@ from architectural_styles.data.dataloaders import create_dataloaders
 from architectural_styles.models.module import ImageClassifier
 
 
-@hydra.main(version_base=None, config_path="../../configs", config_name="train")
+@hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg: DictConfig):
     train_loader, val_loader = create_dataloaders(
         data_dir=cfg.data.dir,

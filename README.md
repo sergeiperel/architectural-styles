@@ -62,14 +62,14 @@ Model selection is performed via Hydra:
 
 2. Creating a virtual environment and installing dependencies
     ```
-    uv venv
     uv sync
+    .\.venv\Scripts\activate.ps1
     ```
 
 3. Installing pre-commit hooks
     ```
     uv run pre-commit install
-    uv pre-commit run -a
+    uv run pre-commit run -a
     ```
 
 ## 📦 Data Management (DVC)
@@ -106,7 +106,6 @@ During training, the following are logged:
 - train_acc
 - val_acc
 - hyperparameters
-- code version (git commit)
 
 Launching MLflow UI:
     ```

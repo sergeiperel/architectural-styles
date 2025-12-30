@@ -10,7 +10,7 @@ from architectural_styles.data.transform import get_val_transforms
 from architectural_styles.models.module import ImageClassifier
 
 
-@hydra.main(version_base=None, config_path="../../configs", config_name="train")
+@hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg: DictConfig):
     model = ImageClassifier.load_from_checkpoint(
         cfg.infer.checkpoint_path,
