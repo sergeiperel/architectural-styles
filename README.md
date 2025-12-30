@@ -83,11 +83,11 @@ Training is launched through a single entry point using Hydra
 
 - ArchiNet Training
     ```
-    python -m architectural_styles.main model.name=archinet
+    python -m architectural_styles.train model.name=archinet
     ```
 - LeNet Training
     ```
-    python -m architectural_styles.main model.name=lenet
+    python -m architectural_styles.train model.name=lenet
     ```
 
 What happens during training:
