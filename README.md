@@ -5,12 +5,11 @@ The project implements a full ML pipeline:
 data loading &#8594; preprocessing &#8594; training &#8594; inference &#8594; experiment logging
 using PyTorch Lightning, Hydra, DVC, MLflow, and uv.
 
-## Project Overview
+## 📕 Project Overview
 
 The goal of the project is to classify images of architectural objects by architectural styles based on images of building facades.
 
-Dataset
-
+Dataset:
 - Building images are grouped by architectural style
 - Data format:
     ```
@@ -18,7 +17,7 @@ Dataset
     ├── style_1/
     │ ├── img1.jpg
     │ ├── img2.jpg
-    ├── style_2/
+    ├──style_2/
     │ ├── img1.jpg
     │ ├── img2.jpg
     ...
@@ -53,7 +52,7 @@ Model selection is performed via Hydra:
 - uv (dependency management)
 - pre-commit + ruff
 
-## 🛠 Setup
+## 🛠️ Setup
 
 1. Cloning the repository
     ```
@@ -69,22 +68,22 @@ Model selection is performed via Hydra:
 
 3. Installing pre-commit hooks
     ```
-    pre-commit install
-    pre-commit run -a
+    uv run pre-commit install
+    uv pre-commit run -a
     ```
 
 ## 📦 Data Management (DVC)
 Downloading a dataset. DVC will automatically download data from remote storage (Yandex S3).
     ```
-    dvc pull
+    uv run dvc pull
     ```
 
-## Train
+## 💪 Train
 Training is launched through a single entry point using Hydra
 
 - ArchiNet Training
     ```
-  python -m architectural_styles.main model.name=archinet
+    python -m architectural_styles.main model.name=archinet
     ```
 - LeNet Training
     ```
@@ -113,11 +112,9 @@ Launching MLflow UI:
     ```
     mlflow ui --host 127.0.0.1 --port 8080
     ```
-After this, the interface will be accessible at:
+After this, the interface will be accessible at: http://127.0.0.1:8080
 
-👉 http://127.0.0.1:8080
-
-## Inference
+## 🔍 Inference
 Inference is performed using the last checkpoint of the trained model.
     ```
     python -m architectural_styles.infer model.name=archinet

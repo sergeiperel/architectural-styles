@@ -11,7 +11,7 @@ venv/
 
 # DVC
 .dvc/cache
-data/**
+#data/**
 
 # ML artifacts
 lightning_logs/
@@ -22,3 +22,4 @@ mlruns/
 
 # IDEs
 .idea/
+/data

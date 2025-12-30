@@ -4,7 +4,7 @@ model:
 
 data:
   dir: data/raw/architectural-styles-dataset
-  infer_dir: data/raw/architectural-styles-dataset
+  infer_dir: data/inference/architectural-styles-dataset
   batch_size: 32
 
 train:
