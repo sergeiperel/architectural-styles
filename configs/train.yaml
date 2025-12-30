@@ -13,4 +13,4 @@ train:
 
 infer:
   checkpoint_path: "lightning_logs/version_0/checkpoints/last.ckpt"
-  output_path: "predictions.csv"
+  output_path: "outputs/predictions.csv"

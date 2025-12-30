@@ -8,15 +8,17 @@ __pycache__/
 .venv
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
 
-#.dvc/cache
-#data/**
-#!data/**/*.dvc
+# DVC
+.dvc/cache
+data/**
 
+# ML artifacts
+lightning_logs/
+checkpoints/
+outputs/
+mlflow.db
 mlruns/
 
+# IDEs
 .idea/
-/data
