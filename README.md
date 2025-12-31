@@ -56,7 +56,7 @@ Model selection is performed via Hydra:
 1. Cloning the repository
     ```
     git clone https://github.com/sergeiperel/architectural-styles.git
-    cd architectural_styles
+    cd architectural-styles
     ```
 
 2. Creating a virtual environment and installing dependencies
@@ -73,9 +73,9 @@ Model selection is performed via Hydra:
 
 ## 📦 Data Management (DVC)
 Downloading a dataset. DVC will automatically download data from remote storage (Yandex S3).
-    ```
-    uv run dvc pull
-    ```
+```
+uv run dvc pull
+```
 
 ## 💪 Train
 Don't forget to start MLflow server before the training part
@@ -128,7 +128,12 @@ The inference results are saved in a CSV file:
 ```
 outputs/inference_results.csv
 ```
-The script automatically loads the corresponding checkpoint for the chosen model.
+
+By default, the script automatically loads the latest (last.ckpt) checkpoint corresponding to the selected model.
+If needed, you can explicitly specify a particular checkpoint to run inference with:
+```
+uv run python -m architectural_styles.infer model.name=lenet "infer.checkpoint_path=checkpoints/lenet/lenet_epoch-0_lr-0.01_val_loss-3.40.ckpt"
+```
 
 ## 📂 Project Structure
 ```
