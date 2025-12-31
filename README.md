@@ -138,20 +138,22 @@ uv run python -m architectural_styles.infer model.name=lenet "infer.checkpoint_p
 ## 📂 Project Structure
 ```
 architectural-styles/
+├── checkpoints/            # saved checkpoints for each model
 ├── configs/                # Hydra configs
+│   ├── data/
+│   ├── infer/
+│   ├── logging/
+│   ├── model/
+│   ├── train/
+│   └── config.yaml
 ├── data/                   # DVC metadata + inference data
+├── outputs/                # inference results & hydra logs
 ├── src/
 │   └── architectural_styles/
 │       ├── data/           # Dataset & dataloaders
 │       ├── models/         # CNN models + LightningModule
 │       ├── infer.py
 │       └── train.py
-├── checkpoints/            # saved checkpoints for each model
-├── outputs/                # inference results
-├── .dvcignore
-├── .gitignore
-├── .python-version
-├── .pre-commit-config.yaml
 ├── uv.lock
 ├── data.dvc
 ├── pyproject.toml
