@@ -1,2 +1,2 @@
-checkpoint_path: checkpoints/${model.name}/last.ckpt
+checkpoint_path: null # checkpoints/${model.name}/last.ckpt
 output_path: outputs/inference_results.csv

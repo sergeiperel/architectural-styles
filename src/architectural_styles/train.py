@@ -32,11 +32,12 @@ def main(cfg: DictConfig):
 
     checkpoint_cb = ModelCheckpoint(
         dirpath=f"checkpoints/{cfg.model.name}",
-        filename=f"{cfg.model.name}-epoch{{epoch}}-lr{cfg.train.lr}-val_loss{{val_loss:.2f}}",
-        save_top_k=1,
+        filename=(f"{cfg.model.name}_epoch-{{epoch}}_lr-{cfg.train.lr}_val_loss-{{val_loss:.2f}}"),
         monitor="val_loss",
         mode="min",
+        save_top_k=1,
         save_last=True,
+        auto_insert_metric_name=False,
     )
 
     mlflow_logger = MLFlowLogger(

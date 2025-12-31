@@ -13,7 +13,7 @@ from architectural_styles.models.module import ImageClassifier
 @hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg: DictConfig):
     checkpoint_path = cfg.infer.checkpoint_path
-    if checkpoint_path is None:
+    if not checkpoint_path:
         checkpoint_path = f"checkpoints/{cfg.model.name}/last.ckpt"
 
     model = ImageClassifier.load_from_checkpoint(
@@ -23,7 +23,7 @@ def main(cfg: DictConfig):
         lr=cfg.train.lr,
     )
     model.eval()
-    print(f"Loaded model: {cfg.model.name} from {cfg.infer.checkpoint_path}")
+    print(f"Loaded model: {cfg.model.name} from {checkpoint_path}")
 
     results = []
 
