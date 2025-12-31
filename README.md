@@ -144,13 +144,17 @@ architectural-styles/
 │   └── architectural_styles/
 │       ├── data/           # Dataset & dataloaders
 │       ├── models/         # CNN models + LightningModule
-│       ├── preprocessing/  # Transforms
 │       ├── infer.py
 │       └── train.py
 ├── checkpoints/            # saved checkpoints for each model
 ├── outputs/                # inference results
-├── pyproject.toml
+├── .dvcignore
+├── .gitignore
+├── .python-version
+├── .pre-commit-config.yaml
 ├── uv.lock
 ├── data.dvc
+├── pyproject.toml
+├── LICENSE
 └── README.md
 ```
